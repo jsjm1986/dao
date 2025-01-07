@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命理推演系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>命理推演系统</h1>
+        <div class="experts-container">
+            <h2>选择专家</h2>
+            <div class="experts-grid" id="expertsGrid">
+                <div class="expert-card" data-expert="bazi">
+                    <h3>八字命理专家</h3>
+                    <p>擅长分析您的先天命格、人生运势、事业发展、婚姻情感等。通过八字能全面了解您的人生规划和发展方向。</p>
+                </div>
+                <div class="expert-card" data-expert="ziwei">
+                    <h3>紫微斗数专家</h3>
+                    <p>详细解读您人生12个重要领域，包括性格特质、财运、事业、婚姻、健康等，能给出精准的人生预测。</p>
+                </div>
+                <div class="expert-card" data-expert="liuyao">
+                    <h3>六爻预测专家</h3>
+                    <p>专门解答您当前困惑的具体问题，如感情、事业、投资等，能给出明确的趋吉避凶建议。</p>
+                </div>
+                <div class="expert-card" data-expert="qimen">
+                    <h3>奇门遁甲专家</h3>
+                    <p>帮您选择最佳的行动时机和方向，特别适合重大决策、商业谈判、择业择偶等重要事项的指导。</p>
+                </div>
+                <div class="expert-card" data-expert="daliuren">
+                    <h3>大六壬专家</h3>
+                    <p>精通天时地利人和的预测，能为您解答事业、婚姻、投资等方面的具体问题，并给出准确的时间指引。</p>
+                </div>
+                <div class="expert-card" data-expert="taiyi">
+                    <h3>太乙神数专家</h3>
+                    <p>擅长预测人生大事，能为您分析事业发展、婚姻感情、健康运势等重要问题，并提供具体的改运方案。</p>
+                </div>
+                <div class="expert-card" data-expert="zeji">
+                    <h3>择吉术专家</h3>
+                    <p>专注于各类重要事项的吉日选择，如婚嫁、开业、搬迁、动土等，帮您趋吉避凶，把握最佳时机。</p>
+                </div>
+                <div class="expert-card" data-expert="astrology">
+                    <h3>占星术专家</h3>
+                    <p>通过西方占星术，为您分析性格特质、人生方向、事业发展、感情婚姻等，提供全新的视角和建议。</p>
+                </div>
+                <div class="expert-card" data-expert="wuxing">
+                    <h3>五行分析专家</h3>
+                    <p>深入分析您命局中的五行配比，找出五行失衡点，并提供调理方案，帮助您达到阴阳五行的和谐平衡。</p>
+                </div>
+                <div class="expert-card" data-expert="destiny">
+                    <h3>运势分析专家</h3>
+                    <p>专注于运势预测和调理，全面分析事业、财运、感情、健康等各方面运势，并提供具体的趋吉避凶建议。</p>
+                </div>
+            </div>
+        </div>
+        <div class="input-form" style="display: none;">
+            <form id="birthForm">
+                <div class="form-group">
+                    <label for="year">阴历年份：</label>
+                    <select id="year" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="month">阴历月份：</label>
+                    <select id="month" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="day">阴历日期：</label>
+                    <select id="day" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="hour">出生时辰：</label>
+                    <select id="hour" required>
+                        <option value="子">子时 (23:00-1:00)</option>
+                        <option value="丑">丑时 (1:00-3:00)</option>
+                        <option value="寅">寅时 (3:00-5:00)</option>
+                        <option value="卯">卯时 (5:00-7:00)</option>
+                        <option value="辰">辰时 (7:00-9:00)</option>
+                        <option value="巳">巳时 (9:00-11:00)</option>
+                        <option value="午">午时 (11:00-13:00)</option>
+                        <option value="未">未时 (13:00-15:00)</option>
+                        <option value="申">申时 (15:00-17:00)</option>
+                        <option value="酉">酉时 (17:00-19:00)</option>
+                        <option value="戌">戌时 (19:00-21:00)</option>
+                        <option value="亥">亥时 (21:00-23:00)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">性别：</label>
+                    <select id="gender" required>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="back-btn" onclick="showExpertSelection()">返回选择专家</button>
+                    <button type="submit" class="submit-btn">开始推演</button>
+                </div>
+            </form>
+        </div>
+        <div class="history-container">
+            <h2>历史记录</h2>
+            <div id="historyList"></div>
+        </div>
+        <div class="result-container" id="resultContainer">
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>正在推演中...</p>
+            </div>
+            <div class="result" id="result"></div>
+            <div class="chat-container" id="chatContainer" style="display: none;">
+                <div class="chat-header">
+                    <h3 id="chatExpertName">与专家对话</h3>
+                    <p class="chat-tip">您可以向专家咨询更详细的问题</p>
+                </div>
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input-container">
+                    <textarea id="chatInput" placeholder="请输入您的问题..." rows="3"></textarea>
+                    <button id="sendMessage" class="chat-send-btn">
+                        <span>发送</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 专家系统相关脚本 -->
+    <script src="js/expert-prompts.js"></script>
+    <script src="js/experts/bazi-expert.js"></script>
+    <script src="js/experts/ziwei-expert.js"></script>
+    <script src="js/experts/liuyao-expert.js"></script>
+    <script src="js/experts/qimen-expert.js"></script>
+    <script src="js/experts/daliuren-expert.js"></script>
+    <script src="js/experts/taiyi-expert.js"></script>
+    <script src="js/experts/zeji-expert.js"></script>
+    <script src="js/experts/astrology-expert.js"></script>
+    <script src="js/experts/wuxing-expert.js"></script>
+    <script src="js/experts/destiny-expert.js"></script>
+    <script src="js/expert-system.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
