@@ -1,6 +1,6 @@
 // DeepSeek API配置
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';  // 修正为正确的API地址
-const DEEPSEEK_API_KEY = 'sk-7eeeb89fd2b64611b73cea2c9f7d55de';  // DeepSeek API密钥
+const DEEPSEEK_API_KEY = 'sk-921cd3ca27944d239b701b93554d6433';  // DeepSeek API密钥
 
 // 辅助函数：构建API请求头
 function getApiHeaders() {
